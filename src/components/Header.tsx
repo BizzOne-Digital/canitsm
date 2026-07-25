@@ -31,6 +31,22 @@ export default function Header({ ready }: HeaderProps) {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  useEffect(() => {
+    const close = () => setOpen(false);
+    window.addEventListener("resize", close);
+    return () => window.removeEventListener("resize", close);
+  }, []);
+
   return (
     <header
       className={`header ${ready ? "header--ready" : ""} ${scrolled || open ? "header--solid" : ""}`}
