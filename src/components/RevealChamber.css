@@ -1,0 +1,193 @@
+.chamber {
+  position: relative;
+  height: 280vh;
+  background: #05050a;
+}
+
+.chamber__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #05050a;
+}
+
+.chamber__hint {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  pointer-events: none;
+}
+
+.chamber__hint i {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, var(--neon), transparent);
+  box-shadow: 0 0 12px var(--glow-neon);
+  animation: chamberHint 1.8s ease-in-out infinite;
+  transform-origin: top;
+}
+
+@keyframes chamberHint {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleY(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.chamber__portal {
+  position: relative;
+  width: min(1100px, 96vw);
+  height: min(720px, 86vh);
+  overflow: hidden;
+  transform: scale(0.2);
+  transform-origin: center center;
+  border-radius: 32px;
+  will-change: transform;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(168, 85, 247, 0.55), transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(0, 229, 255, 0.35), transparent 45%),
+    linear-gradient(155deg, #2a1050 0%, #0a0618 55%, #06101a 100%);
+  border: 2px solid rgba(0, 229, 255, 0.65);
+  box-shadow:
+    0 0 60px rgba(168, 85, 247, 0.65),
+    0 0 120px rgba(0, 229, 255, 0.3),
+    inset 0 0 60px rgba(0, 0, 0, 0.45);
+}
+
+.chamber--neon .chamber__portal {
+  background:
+    radial-gradient(ellipse at 40% 30%, rgba(0, 229, 255, 0.45), transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(168, 85, 247, 0.4), transparent 45%),
+    linear-gradient(155deg, #061820 0%, #05050a 55%, #12081f 100%);
+}
+
+.chamber--split .chamber__portal {
+  background:
+    linear-gradient(120deg, rgba(168, 85, 247, 0.45), transparent 40%),
+    linear-gradient(300deg, rgba(0, 229, 255, 0.35), transparent 40%),
+    #05050a;
+}
+
+.chamber__ring {
+  position: absolute;
+  inset: 8%;
+  border: 2px solid rgba(0, 229, 255, 0.55);
+  border-radius: 40%;
+  pointer-events: none;
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.35);
+  z-index: 1;
+}
+
+.chamber__shards {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.chamber__shard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: var(--neon);
+  box-shadow: 0 0 16px var(--glow-neon);
+  opacity: 0.7;
+  transform:
+    rotate(calc(var(--i) * 45deg))
+    translateY(-90px)
+    rotate(45deg);
+}
+
+.chamber__shard:nth-child(odd) {
+  background: var(--accent);
+  box-shadow: 0 0 16px var(--glow-purple);
+}
+
+.chamber__peek {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 1rem;
+  font-size: clamp(0.7rem, 2.2vw, 1.1rem);
+  letter-spacing: 0.12em;
+  color: var(--neon);
+  text-shadow: 0 0 24px var(--glow-neon);
+  pointer-events: none;
+}
+
+.chamber__inner {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+.chamber__kicker {
+  margin-bottom: 1.25rem;
+  opacity: 0;
+}
+
+.chamber__title {
+  font-size: clamp(1.4rem, 5vw, 3.4rem);
+  line-height: 1.12;
+  letter-spacing: 0.02em;
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+  overflow-wrap: anywhere;
+}
+
+.chamber__line-wrap {
+  display: block;
+  overflow: visible;
+}
+
+.chamber__line {
+  display: block;
+  opacity: 0;
+  text-shadow: 0 0 40px rgba(168, 85, 247, 0.35);
+}
+
+.chamber__line-wrap:nth-child(even) .chamber__line {
+  color: var(--neon);
+  text-shadow: 0 0 40px var(--glow-neon);
+}
+
+.chamber__body {
+  max-width: min(40rem, 100%);
+  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--ink-muted);
+  font-family: var(--font-body);
+  opacity: 0;
+}
+
+.chamber__word {
+  display: inline-block;
+}

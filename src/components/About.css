@@ -1,0 +1,64 @@
+.about {
+  padding: 8rem 0;
+  perspective: 1200px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(168, 85, 247, 0.16), transparent 45%),
+    var(--bg);
+}
+
+.about__title {
+  font-size: clamp(2.8rem, 7vw, 5.8rem);
+  max-width: 16ch;
+  margin: 0.75rem 0 1.5rem;
+}
+
+.about__lede {
+  max-width: 34ch;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  color: var(--ink-muted);
+  margin-bottom: 5rem;
+}
+
+.about__statement {
+  display: grid;
+  gap: 0.15rem;
+  margin-bottom: 5rem;
+  transform-style: preserve-3d;
+}
+
+.about__statement .display {
+  font-size: clamp(4rem, 16vw, 11rem);
+  line-height: 0.88;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(0, 229, 255, 0.45);
+}
+
+.about__statement-lead {
+  color: var(--neon) !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: 0 0 40px var(--glow-neon), 0 0 80px var(--glow-purple);
+}
+
+.about__traits {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 3rem;
+}
+
+.about-trait h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  letter-spacing: 0.03em;
+  margin-bottom: 0.65rem;
+}
+
+.about-trait p {
+  color: var(--ink-muted);
+  line-height: 1.65;
+}
+
+@media (max-width: 700px) {
+  .about__traits {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,25 @@
+.page-shell {
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+.page-shell__hero {
+  padding: 8rem 0 2rem;
+}
+
+.page-shell__title {
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  max-width: 12ch;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.page-shell__lede {
+  max-width: 40ch;
+  color: var(--ink-muted);
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.page-shell__cta {
+  padding: 4rem 0 6rem;
+}

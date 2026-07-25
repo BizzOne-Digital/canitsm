@@ -1,0 +1,20 @@
+.app {
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.app--locked {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.app--ready {
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}

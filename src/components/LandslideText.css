@@ -1,0 +1,13 @@
+.landslide {
+  overflow: visible;
+}
+
+.rock-word,
+.rock-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.rock-space {
+  display: inline;
+}
