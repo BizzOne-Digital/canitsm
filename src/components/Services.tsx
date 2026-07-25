@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LandslideText from "./LandslideText";
@@ -89,9 +90,9 @@ export default function Services() {
               <span className="svc-card__num">{s.num}</span>
               <h3 className="svc-card__title">{s.title}</h3>
               <p className="svc-card__copy">{s.copy}</p>
-              <a href="#contact" className="svc-card__link">
+              <Link to="/services" className="svc-card__link">
                 Get Started →
-              </a>
+              </Link>
             </article>
           ))}
         </div>

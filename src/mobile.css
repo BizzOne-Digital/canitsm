@@ -91,6 +91,18 @@
     gap: 0.85rem;
   }
 
+  .home-stats {
+    padding: 4rem 0;
+  }
+
+  .home-storm {
+    padding: 4.5rem 0;
+  }
+
+  .home-strip {
+    padding: 4.5rem 0;
+  }
+
   /* Services page */
   .services-hero {
     min-height: auto;

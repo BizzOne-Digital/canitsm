@@ -1,13 +1,101 @@
+import { useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { services } from "../data/services";
 import "./Footer.css";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Footer() {
   const year = new Date().getFullYear();
+  const ref = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".footer__mega-word",
+        {
+          y: 120,
+          rotate: () => gsap.utils.random(-18, 18),
+          opacity: 0,
+          scale: 0.8,
+        },
+        {
+          y: 0,
+          rotate: 0,
+          opacity: 1,
+          scale: 1,
+          stagger: { each: 0.08, from: "random" },
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".footer__mega",
+            start: "top 90%",
+            end: "top 45%",
+            scrub: 1,
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".footer__col, .footer__brand-block",
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".footer__top",
+            start: "top 85%",
+            end: "top 50%",
+            scrub: 1,
+          },
+        },
+      );
+
+      gsap.to(".footer__marquee-track", {
+        xPercent: -50,
+        ease: "none",
+        duration: 28,
+        repeat: -1,
+      });
+
+      gsap.to(".footer__float", {
+        y: "+=24",
+        x: "+=12",
+        duration: 5,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut",
+        stagger: 0.7,
+      });
+    }, root);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <footer className="footer">
+    <footer className="footer" ref={ref}>
       <div className="footer__glow" aria-hidden="true" />
+      <div className="footer__float footer__float--a" aria-hidden="true" />
+      <div className="footer__float footer__float--b" aria-hidden="true" />
+
+      <div className="footer__mega" aria-hidden="true">
+        <span className="footer__mega-word">SECURE</span>
+        <span className="footer__mega-word">SCALE</span>
+        <span className="footer__mega-word">LEAD</span>
+      </div>
+
+      <div className="footer__marquee" aria-hidden="true">
+        <div className="footer__marquee-track">
+          <span>FLUENT IT · 24/7 SUPPORT · CANADA · CLOUD · CYBER · CANITSM · </span>
+          <span>FLUENT IT · 24/7 SUPPORT · CANADA · CLOUD · CYBER · CANITSM · </span>
+        </div>
+      </div>
 
       <div className="footer__top container">
         <div className="footer__brand-block">
@@ -20,6 +108,7 @@ export default function Footer() {
             businesses — with Fluent IT, not jargon.
           </p>
           <Link to="/contact" className="btn footer__cta">
+            <span className="footer__cta-shine" aria-hidden="true" />
             Book Free Consultation
           </Link>
         </div>
@@ -57,9 +146,7 @@ export default function Footer() {
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
           <p>© {year} CanITSM Consulting. All rights reserved.</p>
-          <p className="footer__credit">
-            Secure · Scale · Lead
-          </p>
+          <p className="footer__credit">Secure · Scale · Lead</p>
         </div>
       </div>
     </footer>
