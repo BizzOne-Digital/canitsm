@@ -2,7 +2,7 @@
   position: relative;
   padding: 8rem 0;
   background:
-    radial-gradient(ellipse at 10% 0%, rgba(168, 85, 247, 0.14), transparent 40%),
+    radial-gradient(ellipse at 10% 0%, rgba(139, 92, 246, 0.14), transparent 40%),
     var(--bg);
 }
 
@@ -29,7 +29,7 @@
   position: relative;
   padding: 2.25rem 2rem;
   border-top: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(30, 16, 55, 0.65), transparent);
+  background: linear-gradient(180deg, rgba(139, 92, 246, 0.08), transparent);
   min-height: 280px;
   display: flex;
   flex-direction: column;

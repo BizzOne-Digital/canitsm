@@ -177,16 +177,18 @@ export default function Hero({ ready }: HeroProps) {
             preserveAspectRatio="none"
           >
             <defs>
-              <linearGradient id="heroMeshGradA" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#a855f7" />
-                <stop offset="50%" stopColor="#00e5ff" />
-                <stop offset="100%" stopColor="#c084fc" />
-              </linearGradient>
-              <linearGradient id="heroMeshFill" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#a855f7" stopOpacity="0.4" />
-                <stop offset="55%" stopColor="#00e5ff" stopOpacity="0.14" />
-                <stop offset="100%" stopColor="#05050a" stopOpacity="0" />
-              </linearGradient>
+            <linearGradient id="heroMeshGradA" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#8b5cf6" />
+              <stop offset="35%" stopColor="#ec4899" />
+              <stop offset="70%" stopColor="#06b6d4" />
+              <stop offset="100%" stopColor="#a78bfa" />
+            </linearGradient>
+            <linearGradient id="heroMeshFill" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.28" />
+              <stop offset="40%" stopColor="#ec4899" stopOpacity="0.12" />
+              <stop offset="70%" stopColor="#06b6d4" stopOpacity="0.14" />
+              <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+            </linearGradient>
             </defs>
             <path
               d="M0,210 L80,150 L160,230 L240,130 L320,220 L400,145 L480,235 L560,140 L640,225 L720,155 L800,240 L880,148 L960,228 L1040,160 L1120,235 L1200,170 V320 H0 Z"
@@ -224,8 +226,9 @@ export default function Hero({ ready }: HeroProps) {
           >
             <defs>
               <linearGradient id="heroMeshGradM" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#00e5ff" />
-                <stop offset="100%" stopColor="#a855f7" />
+                <stop offset="0%" stopColor="#06b6d4" />
+                <stop offset="50%" stopColor="#ec4899" />
+                <stop offset="100%" stopColor="#8b5cf6" />
               </linearGradient>
             </defs>
             {Array.from({ length: 7 }).map((_, i) => (
@@ -248,9 +251,9 @@ export default function Hero({ ready }: HeroProps) {
           >
             <defs>
               <linearGradient id="heroMeshGradB" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#00e5ff" />
-                <stop offset="50%" stopColor="#a855f7" />
-                <stop offset="100%" stopColor="#7c3aed" />
+                <stop offset="0%" stopColor="#06b6d4" />
+                <stop offset="40%" stopColor="#a78bfa" />
+                <stop offset="100%" stopColor="#ec4899" />
               </linearGradient>
             </defs>
             {hLines2.map((line, i) => (
