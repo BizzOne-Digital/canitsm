@@ -16,6 +16,10 @@ const traits = [
     copy: "Work with local, highly trained IT professionals who understand your business context.",
   },
   {
+    title: "Quarterly Strategy Reviews",
+    copy: "Regular reviews that keep technology aligned with the next move your business needs to make.",
+  },
+  {
     title: "Vendor & Software Management",
     copy: "Simplify how you manage all your vendors and software with one trusted partner.",
   },
@@ -86,8 +90,9 @@ export default function About() {
           mode="words"
         />
         <p className="about__lede serif">
-          A Canada-based IT company, driven by innovation and built on trust. We modernize and
-          secure the digital backbone of ambitious Canadian businesses.
+          CanITSM is more than an IT provider — we are a growth partner for Canadian organizations.
+          Driven by innovation and built on trust, we modernize and secure the digital backbone of
+          ambitious businesses.
         </p>
 
         <div className="about__statement">

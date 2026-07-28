@@ -1,7 +1,8 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import HeroTerrain from "./HeroTerrain";
 import "./Hero.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -10,30 +11,11 @@ type HeroProps = {
   ready: boolean;
 };
 
-/** Smooth zig-zag polyline across the mesh */
-function zigPath(
-  startY: number,
-  amp: number,
-  step: number,
-  phase = 0,
-): string {
-  const points: string[] = [];
-  for (let x = 0; x <= 1200; x += step) {
-    const up = ((x / step + phase) % 2 === 0);
-    const y = startY + (up ? -amp : amp);
-    points.push(`${x},${y}`);
-  }
-  return `M${points.join(" L")}`;
-}
-
-function vertZig(x: number, phase = 0): string {
-  const points: string[] = [];
-  for (let y = 20; y <= 300; y += 28) {
-    const left = ((y / 28 + phase) % 2 === 0);
-    points.push(`${x + (left ? -14 : 14)},${y}`);
-  }
-  return `M${points.join(" L")}`;
-}
+const BRAND_CAN = "CAN".split("");
+const BRAND_ITSM = "ITSM".split("");
+const HEADLINES = ["Digitally transform.", "Secure your tech.", "Scale with confidence."];
+const ORBIT_DOTS = Array.from({ length: 12 }, (_, i) => i);
+const SPARKS = Array.from({ length: 24 }, (_, i) => i);
 
 export default function Hero({ ready }: HeroProps) {
   const ref = useRef<HTMLElement>(null);
@@ -42,12 +24,20 @@ export default function Hero({ ready }: HeroProps) {
     const root = ref.current;
     if (!root) return;
 
-    // Keep hidden until intro finishes
     if (!ready) {
-      gsap.set([".hero__content", ".hero__mesh", ".hero__scroll"], {
-        y: 160,
-        opacity: 0,
-      });
+      gsap.set(
+        [
+          ".hero__content",
+          ".hero__mesh",
+          ".hero__scroll",
+          ".hero__aurora",
+          ".hero__constellation",
+          ".hero__orbit",
+          ".hero__sparks",
+          ".hero__rail",
+        ],
+        { opacity: 0 },
+      );
       return;
     }
 
@@ -57,67 +47,226 @@ export default function Hero({ ready }: HeroProps) {
       const scrollHint = root.querySelector<HTMLElement>(".hero__scroll");
       const meshInner = root.querySelector<HTMLElement>(".hero__mesh-inner");
 
-      gsap.set(content, { y: 220, opacity: 0 });
-      gsap.set(mesh, { y: 280, opacity: 0 });
-      gsap.set(scrollHint, { opacity: 0 });
+      gsap.set(".hero__letter", {
+        yPercent: 130,
+        rotateX: -85,
+        opacity: 0,
+        filter: "blur(12px)",
+      });
+      gsap.set(".hero__line-inner", { yPercent: 110 });
+      gsap.set(".hero__lede", { y: 40, opacity: 0 });
+      gsap.set(".hero__eyebrow", { y: 24, opacity: 0, letterSpacing: "0.6em" });
+      gsap.set(".hero__cta-row .btn", { y: 36, opacity: 0, scale: 0.92 });
+      gsap.set(".hero__brand-glow", { scale: 0.4, opacity: 0 });
+      gsap.set(".hero__orbit-ring", { scale: 0.5, opacity: 0, rotate: -40 });
+      gsap.set(".hero__spark", { scale: 0, opacity: 0 });
+      gsap.set(content, { opacity: 1, y: 0 });
+      gsap.set(mesh, { y: 160, opacity: 0 });
+      gsap.set(scrollHint, { opacity: 0, y: 20 });
+      gsap.set(".hero__aurora", { opacity: 0, scale: 0.85 });
+      gsap.set(".hero__constellation", { opacity: 0 });
+      gsap.set(".hero__rail", { opacity: 0, x: -20 });
+      gsap.set(".hero__sparks", { opacity: 1 });
 
       const tl = gsap.timeline({
         defaults: { ease: "power3.out" },
-        delay: 0.12,
+        delay: 0.08,
       });
 
-      // 1) Content slides up from bottom after intro
-      tl.to(content, {
-        y: 0,
+      // Atmosphere rises
+      tl.to(".hero__aurora", {
         opacity: 1,
-        duration: 1.45,
-        ease: "power4.out",
-      });
+        scale: 1,
+        duration: 1.4,
+        ease: "power2.out",
+      })
+        .to(".hero__constellation", { opacity: 1, duration: 1 }, "-=1")
+        .to(".hero__rail", { opacity: 1, x: 0, duration: 0.8 }, "-=0.8")
 
-      // 2) Then mesh layer rises from below
-      tl.to(
-        mesh,
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.55,
-          ease: "power3.out",
-        },
-        "-=0.55",
-      );
+        // Orbit rings bloom behind brand
+        .to(
+          ".hero__orbit-ring",
+          {
+            scale: 1,
+            opacity: 1,
+            rotate: 0,
+            duration: 1.15,
+            stagger: 0.1,
+            ease: "expo.out",
+          },
+          "-=0.9",
+        )
+        .to(
+          ".hero__brand-glow",
+          { scale: 1.2, opacity: 1, duration: 0.9, ease: "power2.out" },
+          "-=0.85",
+        )
 
-      tl.to(scrollHint, { opacity: 1, duration: 0.6 }, "-=0.4");
+        // Eyebrow
+        .to(
+          ".hero__eyebrow",
+          {
+            y: 0,
+            opacity: 1,
+            letterSpacing: "0.28em",
+            duration: 0.75,
+          },
+          "-=0.55",
+        )
 
-      // Continuous smooth zig-zag float (after entrance)
+        // Brand letters cascade / slam
+        .to(
+          ".hero__letter",
+          {
+            yPercent: 0,
+            rotateX: 0,
+            opacity: 1,
+            filter: "blur(0px)",
+            duration: 0.95,
+            stagger: 0.055,
+            ease: "back.out(1.85)",
+          },
+          "-=0.35",
+        )
+        .fromTo(
+          ".hero__brand",
+          { scale: 1.08 },
+          { scale: 1, duration: 0.55, ease: "power2.out" },
+          "-=0.35",
+        )
+        // Micro glitch shake
+        .to(".hero__brand", {
+          x: 6,
+          duration: 0.05,
+          yoyo: true,
+          repeat: 5,
+          ease: "none",
+        })
+        .to(".hero__brand", { x: 0, duration: 0.08 })
+
+        // Sparks burst
+        .to(
+          ".hero__spark",
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.35,
+            stagger: { each: 0.02, from: "center" },
+            ease: "power2.out",
+          },
+          "-=0.55",
+        )
+        .to(
+          ".hero__spark",
+          {
+            x: () => gsap.utils.random(-160, 160),
+            y: () => gsap.utils.random(-100, 100),
+            opacity: 0,
+            scale: 0,
+            duration: 0.9,
+            stagger: 0.015,
+            ease: "power2.out",
+          },
+          "-=0.15",
+        )
+
+        // Headline lines wipe up
+        .to(
+          ".hero__line-inner",
+          {
+            yPercent: 0,
+            duration: 0.85,
+            stagger: 0.14,
+            ease: "power4.out",
+          },
+          "-=0.7",
+        )
+        .to(
+          ".hero__lede",
+          { y: 0, opacity: 1, duration: 0.8 },
+          "-=0.45",
+        )
+        .to(
+          ".hero__cta-row .btn",
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.65,
+            stagger: 0.1,
+            ease: "back.out(1.5)",
+          },
+          "-=0.4",
+        )
+
+        // Terrain rises from below
+        .to(
+          mesh,
+          { y: 0, opacity: 1, duration: 1.7, ease: "power3.out" },
+          "-=0.85",
+        )
+        .to(scrollHint, { opacity: 1, y: 0, duration: 0.7 }, "-=0.5");
+
+      // Continuous motion loops
       tl.add(() => {
-        gsap.to(".hero__mesh-layer--back", {
-          y: -14,
-          x: 10,
-          duration: 4.5,
+        gsap.to(".hero__orbit-ring--0", {
+          rotate: 360,
+          duration: 28,
+          repeat: -1,
+          ease: "none",
+        });
+        gsap.to(".hero__orbit-ring--1", {
+          rotate: -360,
+          duration: 20,
+          repeat: -1,
+          ease: "none",
+        });
+        gsap.to(".hero__orbit-ring--2", {
+          rotate: 360,
+          duration: 36,
+          repeat: -1,
+          ease: "none",
+        });
+
+        gsap.to(".hero__aurora-blob--a", {
+          xPercent: 12,
+          yPercent: -8,
+          scale: 1.15,
+          duration: 7,
           yoyo: true,
           repeat: -1,
           ease: "sine.inOut",
         });
-        gsap.to(".hero__mesh-layer--front", {
-          y: 16,
-          x: -14,
-          duration: 5.2,
+        gsap.to(".hero__aurora-blob--b", {
+          xPercent: -14,
+          yPercent: 10,
+          scale: 1.2,
+          duration: 8.5,
           yoyo: true,
           repeat: -1,
           ease: "sine.inOut",
         });
-        gsap.to(".hero__mesh-layer--mid", {
-          y: 8,
-          x: 8,
-          duration: 3.8,
+        gsap.to(".hero__aurora-blob--c", {
+          xPercent: 8,
+          yPercent: 12,
+          scale: 0.9,
+          duration: 6.2,
           yoyo: true,
           repeat: -1,
+          ease: "sine.inOut",
+        });
+
+        gsap.to(".hero__node", {
+          opacity: 0.25,
+          scale: 0.7,
+          duration: 1.6,
+          stagger: { each: 0.12, repeat: -1, yoyo: true },
           ease: "sine.inOut",
         });
 
         if (meshInner) {
           gsap.to(meshInner, {
-            yPercent: 22,
+            yPercent: 18,
             ease: "none",
             scrollTrigger: {
               trigger: root,
@@ -138,26 +287,39 @@ export default function Hero({ ready }: HeroProps) {
             scrub: true,
           },
         });
+
+        gsap.to(".hero__orbit", {
+          yPercent: -6,
+          ease: "none",
+          scrollTrigger: {
+            trigger: root,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
       });
     }, root);
 
-    return () => ctx.revert();
+    const spotlight = root.querySelector<HTMLElement>(".hero__spotlight");
+    const onMove = (e: MouseEvent) => {
+      if (!spotlight) return;
+      const rect = root.getBoundingClientRect();
+      gsap.to(spotlight, {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+        duration: 0.7,
+        ease: "power3.out",
+        overwrite: "auto",
+      });
+    };
+    root.addEventListener("mousemove", onMove);
+
+    return () => {
+      root.removeEventListener("mousemove", onMove);
+      ctx.revert();
+    };
   }, [ready]);
-
-  const hLines = Array.from({ length: 12 }, (_, i) => ({
-    d: zigPath(48 + i * 18, 10 + (i % 3) * 4, 48, i % 2),
-    opacity: 0.28 + (i % 4) * 0.1,
-  }));
-
-  const hLines2 = Array.from({ length: 9 }, (_, i) => ({
-    d: zigPath(70 + i * 22, 14 + (i % 2) * 6, 40, (i + 1) % 2),
-    opacity: 0.4 + (i % 3) * 0.12,
-  }));
-
-  const vLines = Array.from({ length: 16 }, (_, i) => ({
-    d: vertZig(50 + i * 72, i % 2),
-    opacity: 0.22 + (i % 3) * 0.08,
-  }));
 
   return (
     <section
@@ -166,129 +328,92 @@ export default function Hero({ ready }: HeroProps) {
       ref={ref}
     >
       <div className="hero__plane" aria-hidden="true" />
+      <div className="hero__spotlight" aria-hidden="true" />
+
+      <div className="hero__aurora" aria-hidden="true">
+        <span className="hero__aurora-blob hero__aurora-blob--a" />
+        <span className="hero__aurora-blob hero__aurora-blob--b" />
+        <span className="hero__aurora-blob hero__aurora-blob--c" />
+      </div>
+
+      <div className="hero__constellation" aria-hidden="true">
+        {Array.from({ length: 20 }, (_, i) => (
+          <span
+            key={i}
+            className="hero__node"
+            style={{
+              left: `${6 + ((i * 37) % 88)}%`,
+              top: `${8 + ((i * 53) % 70)}%`,
+            }}
+          />
+        ))}
+      </div>
+
+      <p className="hero__rail" aria-hidden="true">
+        Fluent IT · Canada · Secure · Scale
+      </p>
+
+      <div className="hero__orbit" aria-hidden="true">
+        <div className="hero__orbit-ring hero__orbit-ring--0">
+          {ORBIT_DOTS.slice(0, 4).map((i) => (
+            <span key={i} className="hero__orbit-dot" style={{ "--i": i } as CSSProperties} />
+          ))}
+        </div>
+        <div className="hero__orbit-ring hero__orbit-ring--1" />
+        <div className="hero__orbit-ring hero__orbit-ring--2" />
+      </div>
+
+      <div className="hero__sparks" aria-hidden="true">
+        {SPARKS.map((i) => (
+          <span
+            key={i}
+            className={`hero__spark hero__spark--${i % 3}`}
+            style={{
+              left: `${42 + (i % 6) * 3}%`,
+              top: `${28 + Math.floor(i / 6) * 4}%`,
+            }}
+          />
+        ))}
+      </div>
 
       <div className="hero__mesh" aria-hidden="true">
         <div className="hero__mesh-inner">
-          <div className="hero__mesh-glow" />
-
-          <svg
-            className="hero__mesh-layer hero__mesh-layer--back"
-            viewBox="0 0 1200 320"
-            preserveAspectRatio="none"
-          >
-            <defs>
-            <linearGradient id="heroMeshGradA" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#8b5cf6" />
-              <stop offset="35%" stopColor="#ec4899" />
-              <stop offset="70%" stopColor="#06b6d4" />
-              <stop offset="100%" stopColor="#a78bfa" />
-            </linearGradient>
-            <linearGradient id="heroMeshFill" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.28" />
-              <stop offset="40%" stopColor="#ec4899" stopOpacity="0.12" />
-              <stop offset="70%" stopColor="#06b6d4" stopOpacity="0.14" />
-              <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-            </linearGradient>
-            </defs>
-            <path
-              d="M0,210 L80,150 L160,230 L240,130 L320,220 L400,145 L480,235 L560,140 L640,225 L720,155 L800,240 L880,148 L960,228 L1040,160 L1120,235 L1200,170 V320 H0 Z"
-              fill="url(#heroMeshFill)"
-            />
-            {hLines.map((line, i) => (
-              <path
-                key={`hb-${i}`}
-                d={line.d}
-                fill="none"
-                stroke="url(#heroMeshGradA)"
-                strokeWidth="1.15"
-                strokeLinejoin="round"
-                strokeLinecap="round"
-                opacity={line.opacity}
-              />
-            ))}
-            {vLines.map((line, i) => (
-              <path
-                key={`vb-${i}`}
-                d={line.d}
-                fill="none"
-                stroke="url(#heroMeshGradA)"
-                strokeWidth="0.85"
-                strokeLinejoin="round"
-                opacity={line.opacity}
-              />
-            ))}
-          </svg>
-
-          <svg
-            className="hero__mesh-layer hero__mesh-layer--mid"
-            viewBox="0 0 1200 320"
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <linearGradient id="heroMeshGradM" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#06b6d4" />
-                <stop offset="50%" stopColor="#ec4899" />
-                <stop offset="100%" stopColor="#8b5cf6" />
-              </linearGradient>
-            </defs>
-            {Array.from({ length: 7 }).map((_, i) => (
-              <path
-                key={`hm-${i}`}
-                d={zigPath(90 + i * 24, 18, 36, i % 2)}
-                fill="none"
-                stroke="url(#heroMeshGradM)"
-                strokeWidth="1.3"
-                strokeLinejoin="round"
-                opacity={0.35 + (i % 3) * 0.1}
-              />
-            ))}
-          </svg>
-
-          <svg
-            className="hero__mesh-layer hero__mesh-layer--front"
-            viewBox="0 0 1200 320"
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <linearGradient id="heroMeshGradB" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#06b6d4" />
-                <stop offset="40%" stopColor="#a78bfa" />
-                <stop offset="100%" stopColor="#ec4899" />
-              </linearGradient>
-            </defs>
-            {hLines2.map((line, i) => (
-              <path
-                key={`hf-${i}`}
-                d={line.d}
-                fill="none"
-                stroke="url(#heroMeshGradB)"
-                strokeWidth="1.5"
-                strokeLinejoin="round"
-                strokeLinecap="round"
-                opacity={line.opacity}
-              />
-            ))}
-          </svg>
+          <HeroTerrain active={ready} />
         </div>
       </div>
 
       <div className="hero__content container">
         <p className="eyebrow hero__eyebrow">Canada-based IT Consulting</p>
-        <h1 className="hero__brand display" aria-label="CanITSM">
-          <span>CAN</span>
-          <span className="hero__brand-accent">ITSM</span>
-        </h1>
+
+        <div className="hero__brand-wrap">
+          <div className="hero__brand-glow" aria-hidden="true" />
+          <h1 className="hero__brand display" aria-label="CanITSM">
+            {BRAND_CAN.map((ch, i) => (
+              <span key={`c-${i}`} className="hero__letter hero__letter--can">
+                {ch}
+              </span>
+            ))}
+            {BRAND_ITSM.map((ch, i) => (
+              <span key={`i-${i}`} className="hero__letter hero__letter--itsm">
+                {ch}
+              </span>
+            ))}
+          </h1>
+        </div>
+
         <h2 className="hero__headline display">
-          Digitally transform.
-          <br />
-          Secure your tech.
-          <br />
-          Scale with confidence.
+          {HEADLINES.map((line) => (
+            <span key={line} className="hero__line">
+              <span className="hero__line-inner">{line}</span>
+            </span>
+          ))}
         </h2>
+
         <p className="hero__lede">
           CanITSM helps ambitious Canadian businesses modernize infrastructure, protect digital
           assets, and grow with proactive IT — Fluent IT, not jargon.
         </p>
+
         <div className="hero__cta-row">
           <Link className="btn" to="/contact">
             Book Free Consultation

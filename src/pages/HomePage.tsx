@@ -5,6 +5,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Hero from "../components/Hero";
 import Services from "../components/Services";
 import RevealChamber from "../components/RevealChamber";
+import CrossfireLanes from "../components/CrossfireLanes";
+import HorizonRush from "../components/HorizonRush";
 import PinnedGrow from "../components/PinnedGrow";
 import Process from "../components/Process";
 import FluentIT from "../components/FluentIT";
@@ -185,24 +187,24 @@ export default function HomePage() {
 
   const cascade = [
     {
-      kicker: "01 · Listen",
-      title: "We hear the business first",
-      copy: "Initial consultation — goals, gaps, and the future you want to build.",
+      kicker: "01 · Consult",
+      title: "Initial consultation",
+      copy: "We listen to your goals, gaps, and the future you want to build — then map where technology should lead.",
     },
     {
-      kicker: "02 · Design",
-      title: "Roadmaps that actually ship",
-      copy: "Strategy & planning aligned to security, scale, and your bottom line.",
+      kicker: "02 · Plan",
+      title: "Strategy and planning",
+      copy: "Findings become a clear roadmap aligned to security, scale, and your bottom line.",
     },
     {
-      kicker: "03 · Deploy",
-      title: "Zero-drama implementation",
-      copy: "Systems, cloud, and integrations with zero disruption to your team.",
+      kicker: "03 · Implement",
+      title: "Implementation",
+      copy: "Systems, cloud, and integrations delivered with zero drama and zero disruption to your team.",
     },
     {
       kicker: "04 · Support",
-      title: "Always on. Always ahead.",
-      copy: "Ongoing support and quarterly reviews so tech never lags the business.",
+      title: "Ongoing support",
+      copy: "Continuous support and quarterly reviews so tech never lags the business.",
     },
   ];
 
@@ -250,8 +252,8 @@ export default function HomePage() {
         variant="purple"
         content={{
           kicker: "Secure · Scale · Lead",
-          lines: ["HIDDEN POWER", "UNLOCKED"],
-          body: "CanITSM empowers Canadian businesses to scale securely and smartly — with modern infrastructure and proactive support.",
+          lines: ["SECURE.", "SCALE.", "LEAD."],
+          body: "CanITSM empowers Canadian businesses to scale securely and smartly — with modern infrastructure, proactive support, and technology decisions that serve the business first.",
         }}
       />
 
@@ -282,7 +284,7 @@ export default function HomePage() {
           <p className="eyebrow">Featured services</p>
           <LandslideText
             className="home-strip__title display"
-            text="Pick a lane. We crash open the rest."
+            text="Services built for modern Canadian business"
             mode="words"
           />
           <div className="home-strip__grid">
@@ -296,25 +298,26 @@ export default function HomePage() {
                 <span className="home-strip__num">{s.num}</span>
                 <h3 className="display">{s.title}</h3>
                 <p>{s.short}</p>
-                <span className="home-strip__cta">Open →</span>
+                <span className="home-strip__cta">Learn more →</span>
               </Link>
             ))}
           </div>
           <Link className="btn home-strip__all" to="/services">
-            Swipe all services
+            View all services
           </Link>
         </div>
       </section>
 
-      <RevealChamber
+      <CrossfireLanes
         ready={introDone}
         id="fluent-reveal"
-        variant="neon"
-        content={{
-          kicker: "The Fluent IT Advantage",
-          lines: ["WE SPEAK IT", "YOU SPEAK", "BUSINESS"],
-          body: "Stop translating technical headaches. We bridge complex infrastructure and your bottom line — no jargon, just results.",
-        }}
+        kicker="The Fluent IT Advantage"
+        lanes={[
+          { text: "WE SPEAK IT", from: "left" },
+          { text: "YOU SPEAK", from: "right" },
+          { text: "BUSINESS", from: "left" },
+        ]}
+        body="Stop translating technical headaches. We bridge complex infrastructure and your bottom line — no jargon, just results."
       />
 
       {/* Cascade story panels */}
@@ -335,15 +338,33 @@ export default function HomePage() {
       <About />
       <Industries />
 
-      <RevealChamber
+      <HorizonRush
         ready={introDone}
         id="support-reveal"
-        variant="split"
-        content={{
-          kicker: "24/7 Full Time Support",
-          lines: ["ALWAYS ON", "ALWAYS AHEAD"],
-          body: "From strategy to support, we're your partner in digital transformation — available worldwide when you need us.",
-        }}
+        kicker="24/7 Full Time Support"
+        title="Always on. Always ahead."
+        panels={[
+          {
+            tag: "Strategy",
+            title: "One partner. Full stack.",
+            copy: "From roadmap to rollout — security, cloud, and ops under one Canadian team.",
+          },
+          {
+            tag: "Response",
+            title: "Night or noon — we're live",
+            copy: "24/7 support worldwide so incidents never wait for business hours.",
+          },
+          {
+            tag: "Clarity",
+            title: "Fluent IT, not jargon",
+            copy: "We translate tech into decisions your leadership can act on immediately.",
+          },
+          {
+            tag: "Growth",
+            title: "Scale without the panic",
+            copy: "Proactive reviews keep infrastructure ahead of the next growth spike.",
+          },
+        ]}
       />
 
       {/* Final CTA blast */}

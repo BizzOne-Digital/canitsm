@@ -34,15 +34,15 @@ export const services: Service[] = [
     num: "02",
     title: "Microsoft & Cloud Services",
     short:
-      "Expert Microsoft 365 implementation and support, seamless cloud migrations, and reliable backup and business continuity.",
-    hero: "Cloud built for growth",
+      "Cloud transformation built around Microsoft 365, Azure, AWS, and Google — with migration, backup, and ongoing optimization.",
+    hero: "Future in the cloud",
     description:
-      "We provide expert Microsoft 365 implementation and support, seamless cloud migrations, and reliable backup and business continuity solutions so your business stays online and compliant.",
+      "Cloud adoption that improves flexibility, resilience, and scalability. We plan and configure secure cloud infrastructure, deploy Microsoft 365, and keep environments optimized after go-live — so your business stays online and compliant.",
     points: [
-      "Microsoft 365 setup & administration",
-      "Zero-downtime cloud migrations",
-      "Backup & business continuity",
-      "Identity & access management",
+      "Microsoft 365 deployment, configuration & administration",
+      "Migrations: M365, AWS, Google Workspace, SharePoint, tenant-to-tenant & devices",
+      "Secure cloud infrastructure setup across Azure, AWS & GCP",
+      "Data storage, backup, continuity & ongoing management",
     ],
     enterFrom: "right",
   },
@@ -51,15 +51,15 @@ export const services: Service[] = [
     num: "03",
     title: "Cybersecurity & Compliance",
     short:
-      "We secure devices, manage passwords, and train employees to ensure strong cybersecurity and regulatory compliance.",
-    hero: "Security without the jargon",
+      "Enterprise-grade security and compliance — assessments, implementation, managed monitoring, and threat prevention.",
+    hero: "Stay protected",
     description:
-      "MDM secures and manages all company devices centrally. Password management and security training ensure safe access. We keep you compliant and protected around the clock.",
+      "A proactive security framework that reduces risk before incidents disrupt operations. From assessments and implementation to managed monitoring, penetration testing, and compliance support — we strengthen defenses without the jargon.",
     points: [
-      "MDM for all company devices",
-      "Password management & MFA",
-      "Employee security awareness training",
-      "Compliance-ready controls (PIPEDA & more)",
+      "Security assessments: email, endpoints, cloud, identity & compliance readiness",
+      "Implementation across Microsoft 365, AWS, Google Workspace & endpoints",
+      "Managed security, threat detection, network & firewall protection",
+      "Penetration testing, audits, risk assessments & regulatory compliance",
     ],
     enterFrom: "bottom",
   },
@@ -68,15 +68,15 @@ export const services: Service[] = [
     num: "04",
     title: "IT Services Built for Modern Business",
     short:
-      "We'll assess your current environment and show you how to modernize, secure, and scale your technology.",
+      "IT solutions designed for operational performance and growth — strategy, infrastructure, continuity, and automation.",
     hero: "Modern IT. Real results.",
     description:
-      "Comprehensive IT solutions designed to keep your business running smoothly. From infrastructure management to responsive end-user support, we ensure reliability, efficiency, and round-the-clock assistance.",
+      "Comprehensive IT solutions designed to keep your business running smoothly. We assess your technology position, build a practical roadmap, manage infrastructure and devices, and integrate systems so teams work faster with less manual effort.",
     points: [
-      "IT strategy & consultation",
-      "Infrastructure setup & device management",
-      "Business continuity & disaster recovery",
-      "Technology integration & automation",
+      "IT strategy & consultation with a practical roadmap",
+      "Infrastructure setup & employee device management",
+      "Business continuity planning & ongoing technical support",
+      "Technology integration & automation to cut manual work",
     ],
     enterFrom: "left",
   },
@@ -112,6 +112,23 @@ export const services: Service[] = [
       "100% Canadian support team",
     ],
     enterFrom: "right",
+  },
+  {
+    slug: "devsecops",
+    num: "07",
+    title: "DevSecOps Services",
+    short:
+      "Secure software delivery without slowing teams down — strategy, CI/CD security, apps, cloud, and platforms.",
+    hero: "Ship fast. Stay secure.",
+    description:
+      "DevSecOps that protects the software lifecycle while development keeps moving. From maturity assessments and secure SDLC design to automated security gates and cloud-native controls, we embed security into how you build and run software.",
+    points: [
+      "Strategy & assessment: maturity, secure SDLC, threat modeling & roadmaps",
+      "CI/CD security: SAST, DAST, SCA, secret & dependency scanning",
+      "Application security: API/web testing & software supply-chain protection",
+      "Cloud, container & platform security: Kubernetes, IaC, zero-trust & secrets",
+    ],
+    enterFrom: "left",
   },
 ];
 

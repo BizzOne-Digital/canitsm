@@ -14,11 +14,11 @@ export default function Layout() {
   const isHome = location.pathname === "/";
   const [introDone, setIntroDone] = useState(() => {
     if (typeof window === "undefined") return false;
-    return sessionStorage.getItem("canitsm-intro") === "1" || !isHome;
+    return sessionStorage.getItem("canitsm-intro-v2") === "1" || !isHome;
   });
 
   const handleIntroComplete = useCallback(() => {
-    sessionStorage.setItem("canitsm-intro", "1");
+    sessionStorage.setItem("canitsm-intro-v2", "1");
     setIntroDone(true);
     requestAnimationFrame(() => ScrollTrigger.refresh());
   }, []);

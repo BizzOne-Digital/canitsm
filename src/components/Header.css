@@ -117,59 +117,17 @@
   flex-shrink: 0;
 }
 
-.header__mark {
-  width: 11px;
-  height: 11px;
-  background: var(--neon);
-  box-shadow: 0 0 14px var(--glow-neon);
-  flex-shrink: 0;
-  animation: markPulse 2.2s ease-in-out infinite;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+.header__logo-img {
+  display: block;
+  height: clamp(40px, 4.2vw, 52px);
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.35s var(--ease-cinema), filter 0.35s ease;
 }
 
-@keyframes markPulse {
-  0%,
-  100% {
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    transform: scale(1.25) rotate(45deg);
-  }
-}
-
-.header__logo {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  line-height: 1;
-  color: var(--ink);
-  white-space: nowrap;
-}
-
-.header__logo-can {
-  display: inline-block;
-  transition: transform 0.35s var(--ease-cinema);
-}
-
-.header__brand:hover .header__logo-can {
-  transform: translateY(-2px) skewX(-6deg);
-}
-
-.header__logo-accent {
-  color: var(--accent);
-  display: inline-block;
-}
-
-.header__tag {
-  display: none;
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  border-left: 1px solid var(--line);
-  padding-left: 0.65rem;
-  white-space: nowrap;
+.header__brand:hover .header__logo-img {
+  transform: translateY(-1px) scale(1.03);
+  filter: drop-shadow(0 6px 14px rgba(27, 38, 104, 0.18));
 }
 
 .header__nav {

@@ -70,9 +70,9 @@ export default function ServicesPage() {
             mode="words"
           />
           <p className="services-hero__lede serif">
-            At CanITSM, our services help Canadian businesses run smarter, stay secure, and scale
-            with confidence. Scroll to swipe through every offering — click a card and watch it
-            crash in like falling rock.
+            At CanITSM, our services help Canadian businesses work smarter, remain secure, and
+            scale confidently. Scroll to explore each offering — then open a service for the full
+            details.
           </p>
         </div>
       </section>
@@ -93,7 +93,7 @@ export default function ServicesPage() {
                 <span className="svc-rail-card__num">{svc.num}</span>
                 <h2 className="svc-rail-card__title display">{svc.title}</h2>
                 <p className="svc-rail-card__copy">{svc.short}</p>
-                <span className="svc-rail-card__cta">Crash open →</span>
+                <span className="svc-rail-card__cta">View service →</span>
               </Link>
             ))}
           </div>
@@ -101,8 +101,8 @@ export default function ServicesPage() {
       </section>
 
       <section className="services-foot container">
-        <p className="eyebrow">Ready?</p>
-        <h2 className="display">Free IT consultation. No strings.</h2>
+        <p className="eyebrow">Ready to work together?</p>
+        <h2 className="display">Start a practical partnership with CanITSM</h2>
         <Link className="btn" to="/contact">
           Book Free Consultation
         </Link>

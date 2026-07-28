@@ -17,19 +17,19 @@ const services = [
   {
     num: "02",
     title: "Microsoft & Cloud Services",
-    copy: "Expert Microsoft 365 implementation and support, seamless cloud migrations, and reliable backup and business continuity.",
+    copy: "Cloud transformation built around Microsoft 365, Azure, AWS, and Google — with migration, backup, and ongoing optimization.",
     from: "right",
   },
   {
     num: "03",
     title: "Cybersecurity & Compliance",
-    copy: "We secure devices, manage passwords, and train employees to ensure strong cybersecurity and regulatory compliance.",
+    copy: "Enterprise-grade security and compliance — assessments, implementation, managed monitoring, and threat prevention.",
     from: "bottom",
   },
   {
     num: "04",
     title: "IT Services Built for Modern Business",
-    copy: "We'll assess your current environment and show you how to modernize, secure, and scale your technology.",
+    copy: "IT solutions designed for operational performance and growth — strategy, infrastructure, continuity, and automation.",
     from: "top",
   },
 ];
@@ -80,8 +80,9 @@ export default function Services() {
           mode="words"
         />
         <p className="services__sub serif">
-          From strategy to support — we do IT right. Run smarter, stay secure, and scale with
-          confidence.
+          CanITSM helps Canadian businesses modernize infrastructure, protect digital assets, and
+          grow with confidence — through IT and end-user support, Microsoft and cloud services,
+          cybersecurity and compliance, and modern-business IT solutions.
         </p>
 
         <div className="services__grid">

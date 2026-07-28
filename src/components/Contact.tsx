@@ -60,22 +60,34 @@ export default function Contact() {
           <p className="eyebrow">Contact</p>
           <LandslideText
             className="contact__title display"
-            text="Let's build something that actually works"
+            text="Let's talk Fluent IT"
             mode="words"
           />
           <p className="contact__lede serif">
-            Free IT consultation. No strings. Just strategy. We'll assess your environment and
-            show you how to modernize, secure, and scale.
+            Reach CanITSM for a free IT consultation. No strings — just a clear look at how to
+            modernize, secure, and scale your technology.
           </p>
         </div>
 
         <div className="contact__panel">
-          <h3 className="contact__panel-title">Start the conversation</h3>
+          <h3 className="contact__panel-title">Book a free IT consultation</h3>
           <form
             className="contact__form"
             onSubmit={(e) => {
               e.preventDefault();
-              window.location.href = "mailto:info@canitsm.com";
+              const form = e.currentTarget;
+              const data = new FormData(form);
+              const body = [
+                `Name: ${data.get("name") || ""}`,
+                `Business email: ${data.get("email") || ""}`,
+                `Business name: ${data.get("business") || ""}`,
+                `Phone: ${data.get("phone") || ""}`,
+                "",
+                `${data.get("message") || ""}`,
+              ].join("\n");
+              window.location.href = `mailto:info@canitsm.com?subject=${encodeURIComponent(
+                "Free IT Consultation Request",
+              )}&body=${encodeURIComponent(body)}`;
             }}
           >
             <label>
@@ -83,8 +95,16 @@ export default function Contact() {
               <input type="text" name="name" placeholder="Your name" required />
             </label>
             <label>
-              Email
+              Business email
               <input type="email" name="email" placeholder="you@company.com" required />
+            </label>
+            <label>
+              Business name
+              <input type="text" name="business" placeholder="Company name" required />
+            </label>
+            <label>
+              Phone
+              <input type="tel" name="phone" placeholder="+1 · Canada" />
             </label>
             <label>
               Message
@@ -100,6 +120,7 @@ export default function Contact() {
           <a href="mailto:info@canitsm.com">info@canitsm.com</a>
           <p>24/7 Full Time Support</p>
           <p>Available Worldwide</p>
+          <p>Support team ready — start with a consultation</p>
         </div>
       </div>
     </section>

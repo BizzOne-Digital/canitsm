@@ -95,12 +95,13 @@ export default function Header({ ready }: HeaderProps) {
 
       <div className="header__bar">
         <Link to="/" className="header__brand" onClick={() => setOpen(false)}>
-          <span className="header__mark" aria-hidden="true" />
-          <span className="header__logo">
-            <span className="header__logo-can">CAN</span>
-            <span className="header__logo-accent">ITSM</span>
-          </span>
-          <span className="header__tag">Consulting</span>
+          <img
+            className="header__logo-img"
+            src="/canitsm-logo.png"
+            alt="CanITSM — We Speak Fluent IT"
+            width={168}
+            height={64}
+          />
         </Link>
 
         <nav className="header__nav" aria-label="Primary">

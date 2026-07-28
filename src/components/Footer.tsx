@@ -100,8 +100,13 @@ export default function Footer() {
       <div className="footer__top container">
         <div className="footer__brand-block">
           <Link to="/" className="footer__logo">
-            <span>CAN</span>
-            <span className="footer__logo-accent">ITSM</span>
+            <img
+              className="footer__logo-img"
+              src="/canitsm-logo.png"
+              alt="CanITSM — We Speak Fluent IT"
+              width={220}
+              height={84}
+            />
           </Link>
           <p className="footer__blurb">
             Canada-based IT consulting. We modernize, secure, and scale technology for ambitious
