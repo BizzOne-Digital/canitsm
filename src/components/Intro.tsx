@@ -25,7 +25,7 @@ export default function Intro({ onComplete }: IntroProps) {
       doneRef.current = true;
       gsap.to(root, {
         autoAlpha: 0,
-        duration: 0.55,
+        duration: 0.35,
         ease: "power2.out",
         onComplete,
       });
@@ -90,18 +90,18 @@ export default function Intro({ onComplete }: IntroProps) {
         onComplete: finish,
       });
 
-      tl.to(".intro__skip", { opacity: 1, duration: 0.4 })
-        .to(".intro__grid", { opacity: 1, duration: 0.7 }, 0)
+      tl.to(".intro__skip", { opacity: 1, duration: 0.25 })
+        .to(".intro__grid", { opacity: 1, duration: 0.4 }, 0)
         .to(
           ".intro__particle",
           {
             scale: 1,
             opacity: 1,
-            duration: 0.8,
-            stagger: { each: 0.02, from: "center" },
+            duration: 0.45,
+            stagger: { each: 0.012, from: "center" },
             ease: "back.out(1.7)",
           },
-          0.15,
+          0.08,
         )
 
         // Hex portals bloom
@@ -111,11 +111,11 @@ export default function Intro({ onComplete }: IntroProps) {
             scale: 1,
             opacity: 1,
             rotate: 0,
-            duration: 1.1,
-            stagger: 0.1,
+            duration: 0.65,
+            stagger: 0.06,
             ease: "expo.out",
           },
-          0.25,
+          0.12,
         )
 
         // Energy bars rise
@@ -124,21 +124,21 @@ export default function Intro({ onComplete }: IntroProps) {
           {
             scaleY: () => gsap.utils.random(0.4, 1),
             opacity: 0.85,
-            duration: 0.7,
-            stagger: { each: 0.03, from: "center" },
+            duration: 0.4,
+            stagger: { each: 0.02, from: "center" },
             ease: "back.out(1.4)",
           },
-          0.4,
+          0.2,
         )
 
         // Progress ring + counter
-        .to(".intro__ring-svg", { opacity: 1, duration: 0.4 }, 0.35)
-        .to(".intro__counter", { opacity: 1, scale: 1, duration: 0.45 }, 0.4)
+        .to(".intro__ring-svg", { opacity: 1, duration: 0.25 }, 0.18)
+        .to(".intro__counter", { opacity: 1, scale: 1, duration: 0.3 }, 0.2)
         .to(
           progress,
           {
             value: 100,
-            duration: 2.6,
+            duration: 1.35,
             ease: "power1.inOut",
             onUpdate: () => {
               if (progressRef.current) {
@@ -148,19 +148,19 @@ export default function Intro({ onComplete }: IntroProps) {
               }
             },
           },
-          0.4,
+          0.2,
         )
         .to(
           ".intro__ring-progress",
-          { strokeDashoffset: 0, duration: 2.6, ease: "power1.inOut" },
-          0.4,
+          { strokeDashoffset: 0, duration: 1.35, ease: "power1.inOut" },
+          0.2,
         )
 
         // Diagonal slashes
         .to(
           ".intro__slash",
-          { scaleX: 1, opacity: 1, duration: 0.7, stagger: 0.08, ease: "expo.out" },
-          0.9,
+          { scaleX: 1, opacity: 1, duration: 0.4, stagger: 0.05, ease: "expo.out" },
+          0.45,
         )
 
         // Brand letters collide from L/R
@@ -170,11 +170,11 @@ export default function Intro({ onComplete }: IntroProps) {
             x: 0,
             opacity: 1,
             rotateY: 0,
-            duration: 0.85,
-            stagger: 0.07,
+            duration: 0.5,
+            stagger: 0.04,
             ease: "back.out(1.7)",
           },
-          1.5,
+          0.75,
         )
         .to(
           ".intro__letter--itsm",
@@ -182,78 +182,78 @@ export default function Intro({ onComplete }: IntroProps) {
             x: 0,
             opacity: 1,
             rotateY: 0,
-            duration: 0.85,
-            stagger: 0.07,
+            duration: 0.5,
+            stagger: 0.04,
             ease: "back.out(1.7)",
           },
-          1.5,
+          0.75,
         )
         .to(
           ".intro__flare",
-          { scale: 1.8, opacity: 0.9, duration: 0.35, ease: "power2.out" },
-          2.15,
+          { scale: 1.8, opacity: 0.9, duration: 0.22, ease: "power2.out" },
+          1.15,
         )
-        .to(".intro__flare", { scale: 2.6, opacity: 0, duration: 0.7 }, 2.35)
+        .to(".intro__flare", { scale: 2.6, opacity: 0, duration: 0.4 }, 1.28)
 
         // Glitch punch
-        .to(".intro__mark", { x: 8, duration: 0.04, yoyo: true, repeat: 7, ease: "none" }, 2.2)
-        .to(".intro__mark", { x: 0, duration: 0.06 }, 2.5)
+        .to(".intro__mark", { x: 8, duration: 0.03, yoyo: true, repeat: 5, ease: "none" }, 1.18)
+        .to(".intro__mark", { x: 0, duration: 0.05 }, 1.35)
 
-        .to(".intro__badge", { y: 0, opacity: 1, duration: 0.45 }, 2.3)
+        .to(".intro__badge", { y: 0, opacity: 1, duration: 0.28 }, 1.22)
         .to(
           ".intro__tag-word",
           {
             y: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.4,
-            stagger: 0.08,
+            duration: 0.28,
+            stagger: 0.045,
             ease: "back.out(1.6)",
           },
-          2.4,
+          1.28,
         )
-        .to(".intro__sub", { opacity: 1, y: 0, duration: 0.5 }, 2.7)
+        .to(".intro__sub", { opacity: 1, y: 0, duration: 0.3 }, 1.45)
 
-        // Hold a beat, then theatrical close
-        .to(".intro__brand-block", { scale: 1.08, duration: 0.55, ease: "power2.in" }, 3.3)
+        // Brief hold, then theatrical close
+        .to(".intro__brand-block", { scale: 1.08, duration: 0.35, ease: "power2.in" }, 1.75)
         .to(
           [".intro__hex", ".intro__bars", ".intro__ring-svg", ".intro__particle", ".intro__grid"],
-          { opacity: 0, duration: 0.4 },
-          3.35,
+          { opacity: 0, duration: 0.25 },
+          1.78,
         )
-        .to(".intro__curtain--top", { yPercent: 0, duration: 0.85, ease: "power4.inOut" }, "curtains")
-        .to(".intro__curtain--bottom", { yPercent: 0, duration: 0.85, ease: "power4.inOut" }, "curtains")
-        .to(".intro__curtain--left", { xPercent: 0, duration: 0.85, ease: "power4.inOut" }, "curtains")
-        .to(".intro__curtain--right", { xPercent: 0, duration: 0.85, ease: "power4.inOut" }, "curtains")
+        .to(".intro__curtain--top", { yPercent: 0, duration: 0.5, ease: "power4.inOut" }, "curtains")
+        .to(".intro__curtain--bottom", { yPercent: 0, duration: 0.5, ease: "power4.inOut" }, "curtains")
+        .to(".intro__curtain--left", { xPercent: 0, duration: 0.5, ease: "power4.inOut" }, "curtains")
+        .to(".intro__curtain--right", { xPercent: 0, duration: 0.5, ease: "power4.inOut" }, "curtains")
         .to(
           ".intro__brand-block",
-          { opacity: 0, scale: 0.7, filter: "blur(12px)", duration: 0.4 },
-          "-=0.35",
+          { opacity: 0, scale: 0.7, filter: "blur(12px)", duration: 0.25 },
+          "-=0.22",
         )
 
         // Aperture explode
         .to(".intro__aperture", {
           clipPath: "inset(16% 20% 16% 20%)",
-          duration: 0.55,
+          duration: 0.35,
           ease: "power3.inOut",
         })
         .to(".intro__aperture", {
           clipPath: "inset(0% 0% 0% 0%)",
-          duration: 1.05,
+          duration: 0.65,
           ease: "expo.inOut",
         })
         .to(
           [".intro__curtain--top", ".intro__curtain--bottom"],
-          { yPercent: (i: number) => (i === 0 ? -110 : 110), duration: 1.05 },
-          "-=0.65",
+          { yPercent: (i: number) => (i === 0 ? -110 : 110), duration: 0.65 },
+          "-=0.4",
         )
         .to(
           [".intro__curtain--left", ".intro__curtain--right"],
-          { xPercent: (i: number) => (i === 0 ? -110 : 110), duration: 1.05 },
+          { xPercent: (i: number) => (i === 0 ? -110 : 110), duration: 0.65 },
           "<",
         )
-        .to(".intro__flash", { opacity: 0.7, duration: 0.1 }, "-=0.4")
-        .to(".intro__flash", { opacity: 0, duration: 0.5 });
+        .to(".intro__flash", { opacity: 0.7, duration: 0.08 }, "-=0.25")
+        .to(".intro__flash", { opacity: 0, duration: 0.3 });
 
       const skipBtn = root.querySelector(".intro__skip");
       const onSkip = () => {

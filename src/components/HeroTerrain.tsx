@@ -145,13 +145,6 @@ export default function HeroTerrain({ active = true }: HeroTerrainProps) {
         }
       }
 
-      // Gentle top fade so text stays readable
-      const topFade = ctx.createLinearGradient(0, 0, 0, h * 0.28);
-      topFade.addColorStop(0, "rgba(255,255,255,0.55)");
-      topFade.addColorStop(1, "rgba(255,255,255,0)");
-      ctx.fillStyle = topFade;
-      ctx.fillRect(0, 0, w, h * 0.28);
-
       if (active) phase += 0.016;
       raf = requestAnimationFrame(draw);
     };

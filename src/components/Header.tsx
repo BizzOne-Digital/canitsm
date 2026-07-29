@@ -99,8 +99,8 @@ export default function Header({ ready }: HeaderProps) {
             className="header__logo-img"
             src="/canitsm-logo.png"
             alt="CanITSM — We Speak Fluent IT"
-            width={168}
-            height={64}
+            width={190}
+            height={90}
           />
         </Link>
 
