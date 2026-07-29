@@ -23,7 +23,7 @@ export default function FluentPage() {
       />
       <section className="page-shell__cta container">
         <Link className="btn" to="/contact">
-          Talk Fluent IT with us
+          Book a Consultation
         </Link>
       </section>
     </main>

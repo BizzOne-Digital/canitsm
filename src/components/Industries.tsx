@@ -9,27 +9,27 @@ gsap.registerPlugin(ScrollTrigger);
 const industries = [
   {
     name: "Financial & Accounting",
-    copy: "Secure, compliant infrastructure that keeps your firm billable during tax season.",
+    copy: "Security assessments, identity controls and cloud migrations that respect audit and confidentiality needs.",
   },
   {
     name: "Law Firms",
-    copy: "Fluent in confidentiality. Practice management and ironclad client communications.",
+    copy: "Confidentiality-minded platforms—secure communications, tenant hygiene and controlled collaboration.",
   },
   {
     name: "Healthcare Clinics",
-    copy: "PIPEDA-compliant cloud solutions so practitioners focus on health, not hardware.",
+    copy: "Privacy-aware cloud and identity patterns so clinical teams can focus on care, not infrastructure noise.",
   },
   {
     name: "Field Service & Logistics",
-    copy: "100% uptime for mobile workflows — keep dispatch and field teams connected.",
+    copy: "Reliable device and cloud pathways that keep dispatch, mobile workflows and ops connected.",
   },
   {
     name: "Recruitment & Startups",
-    copy: "Agile IT environments that grow as fast as your headcount does.",
+    copy: "Lean security baselines and scalable Microsoft or cloud setups that grow with headcount.",
   },
   {
     name: "Education Centers",
-    copy: "Secure managed networks that empower educators and students alike.",
+    copy: "Secure identity, collaboration and development support for educators and learners alike.",
   },
 ];
 

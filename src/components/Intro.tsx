@@ -341,7 +341,7 @@ export default function Intro({ onComplete }: IntroProps) {
               </span>
             ))}
           </p>
-          <p className="intro__sub">Digitally transform · Secure · Scale</p>
+          <p className="intro__sub">Secure · Migrate · Build</p>
         </div>
 
         <div className="intro__aperture">

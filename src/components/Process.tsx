@@ -8,20 +8,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
   {
-    title: "Audit",
-    copy: "We listen to your current environment to understand your tech gaps.",
+    title: "Discover",
+    copy: "Clarify goals, platforms, constraints and risk so the right service pathway is obvious.",
   },
   {
-    title: "Translate",
-    copy: 'We turn complex needs into a clear "Fluent IT" roadmap.',
+    title: "Design",
+    copy: "Translate needs into a Fluent IT roadmap—assessments, migrations, testing or builds with clear scope.",
   },
   {
-    title: "Implement",
-    copy: "Seamless deployment with zero downtime for your team.",
+    title: "Deliver",
+    copy: "Implement, validate and document so your team can operate, audit and extend what we ship.",
   },
   {
-    title: "Optimize",
-    copy: "Quarterly strategy reviews to ensure your tech stays ahead of the curve.",
+    title: "Support",
+    copy: "Hand over cleanly—or continue with managed security and partner support when ongoing coverage fits.",
   },
 ];
 
@@ -66,7 +66,7 @@ export default function Process({ ready = true }: ProcessProps) {
           <p className="eyebrow">The CanITSM Process</p>
           <LandslideText
             className="process__title display"
-            text="Clarity. Partnership. Purpose."
+            text="Discover. Design. Deliver."
             mode="words"
           />
         </div>

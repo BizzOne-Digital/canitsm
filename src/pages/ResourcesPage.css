@@ -1,0 +1,50 @@
+.resources-page {
+  padding-bottom: 2rem;
+}
+
+.resources__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.1rem;
+  padding-bottom: 2rem;
+}
+
+.resources__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1.4rem 1.25rem;
+  border: 1px solid var(--line);
+  background: linear-gradient(165deg, #ffffff, #f7f4fc);
+  min-height: 220px;
+}
+
+.resources__cat {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.resources__card h2 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+}
+
+.resources__card p {
+  color: var(--ink-muted);
+  line-height: 1.55;
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+.resources__card a {
+  color: var(--neon);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}

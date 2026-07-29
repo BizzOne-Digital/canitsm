@@ -60,7 +60,8 @@
 }
 
 .contact__form input,
-.contact__form textarea {
+.contact__form textarea,
+.contact__form select {
   background: rgba(139, 92, 246, 0.05);
   border: 1px solid var(--line);
   color: var(--ink);
@@ -74,8 +75,17 @@
 }
 
 .contact__form input:focus,
-.contact__form textarea:focus {
+.contact__form textarea:focus,
+.contact__form select:focus {
   border-color: var(--accent);
+}
+
+.contact__privacy {
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-muted);
+  line-height: 1.5;
 }
 
 .contact__meta {

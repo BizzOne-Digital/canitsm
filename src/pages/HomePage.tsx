@@ -13,7 +13,8 @@ import FluentIT from "../components/FluentIT";
 import About from "../components/About";
 import Industries from "../components/Industries";
 import LandslideText from "../components/LandslideText";
-import { services } from "../data/services";
+import { primaryCategories } from "../data/catalog";
+import { usePageMeta } from "../hooks/usePageMeta";
 import "./HomePage.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -25,6 +26,11 @@ export default function HomePage() {
   const stormRef = useRef<HTMLElement>(null);
   const statsRef = useRef<HTMLElement>(null);
   const cascadeRef = useRef<HTMLElement>(null);
+
+  usePageMeta(
+    "CanITSM Consulting | Security, Cloud & DevSecOps",
+    "CanITSM delivers cybersecurity, cloud migration, DevSecOps and development services across Microsoft 365, Azure, AWS, Google Workspace and GCP.",
+  );
 
   useLayoutEffect(() => {
     if (!introDone) return;
@@ -174,37 +180,37 @@ export default function HomePage() {
 
   const stormWords = [
     "SECURE",
-    "SCALE",
-    "LEAD",
+    "MIGRATE",
+    "DEVSECOPS",
     "FLUENT",
     "IT",
     "CANADA",
     "CLOUD",
-    "24/7",
+    "VAPT",
     "TRUST",
-    "MODERNIZE",
+    "BUILD",
   ];
 
   const cascade = [
     {
-      kicker: "01 · Consult",
-      title: "Initial consultation",
-      copy: "We listen to your goals, gaps, and the future you want to build — then map where technology should lead.",
+      kicker: "01 · Discover",
+      title: "Clarify goals and risk",
+      copy: "We map platforms, constraints and priorities so the right category—security, migration, testing, DevSecOps or development—is clear from day one.",
     },
     {
-      kicker: "02 · Plan",
-      title: "Strategy and planning",
-      copy: "Findings become a clear roadmap aligned to security, scale, and your bottom line.",
+      kicker: "02 · Design",
+      title: "Scope a practical path",
+      copy: "Assessments, migrations or delivery workflows become a roadmap with defined scope, evidence and handoff expectations.",
     },
     {
-      kicker: "03 · Implement",
-      title: "Implementation",
-      copy: "Systems, cloud, and integrations delivered with zero drama and zero disruption to your team.",
+      kicker: "03 · Deliver",
+      title: "Implement and validate",
+      copy: "Controls, cutovers and builds land with documentation your team can operate, audit and extend.",
     },
     {
       kicker: "04 · Support",
-      title: "Ongoing support",
-      copy: "Continuous support and quarterly reviews so tech never lags the business.",
+      title: "Handoff or manage",
+      copy: "Clean handover—or ongoing managed security and partner support where continuous coverage is needed.",
     },
   ];
 
@@ -215,8 +221,8 @@ export default function HomePage() {
       {/* Neon marquee */}
       <div className="home-marquee" aria-hidden="true">
         <div className="home-marquee__track">
-          <span>SECURE · SCALE · LEAD · FLUENT IT · CANITSM · 24/7 SUPPORT · </span>
-          <span>SECURE · SCALE · LEAD · FLUENT IT · CANITSM · 24/7 SUPPORT · </span>
+          <span>SECURITY · MIGRATION · DEVSECOPS · PEN TESTING · DEVELOPMENT · CANITSM · </span>
+          <span>SECURITY · MIGRATION · DEVSECOPS · PEN TESTING · DEVELOPMENT · CANITSM · </span>
         </div>
       </div>
 
@@ -228,20 +234,20 @@ export default function HomePage() {
         <div className="home-orb home-orb--b" aria-hidden="true" />
         <div className="container home-stats__grid">
           <article className="home-stat">
-            <p className="home-stat__num display">24/7</p>
-            <p className="home-stat__label">Full time support</p>
+            <p className="home-stat__num display">6</p>
+            <p className="home-stat__label">Service categories</p>
           </article>
           <article className="home-stat">
-            <p className="home-stat__num display">100%</p>
-            <p className="home-stat__label">Canadian team</p>
+            <p className="home-stat__num display">~80</p>
+            <p className="home-stat__label">Named offerings</p>
           </article>
           <article className="home-stat">
             <p className="home-stat__num display">M365</p>
-            <p className="home-stat__label">Certified experts</p>
+            <p className="home-stat__label">Azure · AWS · GCP</p>
           </article>
           <article className="home-stat">
             <p className="home-stat__num display">1</p>
-            <p className="home-stat__label">Point of contact</p>
+            <p className="home-stat__label">Clear consultation path</p>
           </article>
         </div>
       </section>
@@ -251,9 +257,9 @@ export default function HomePage() {
         id="secure"
         variant="purple"
         content={{
-          kicker: "Secure · Scale · Lead",
-          lines: ["SECURE.", "SCALE.", "LEAD."],
-          body: "CanITSM empowers Canadian businesses to scale securely and smartly — with modern infrastructure, proactive support, and technology decisions that serve the business first.",
+          kicker: "Secure · Migrate · Build",
+          lines: ["SECURE.", "MIGRATE.", "BUILD."],
+          body: "CanITSM Consulting strengthens cybersecurity, migrates platforms safely, integrates DevSecOps into delivery, and builds websites and mobile apps—Fluent IT, not jargon.",
         }}
       />
 
@@ -284,18 +290,13 @@ export default function HomePage() {
           <p className="eyebrow">Featured services</p>
           <LandslideText
             className="home-strip__title display"
-            text="Services built for modern Canadian business"
+            text="Six pathways. One consultation."
             mode="words"
           />
           <div className="home-strip__grid">
-            {services.slice(0, 4).map((s) => (
-              <Link
-                key={s.slug}
-                to={`/services/${s.slug}`}
-                state={{ enterFrom: s.enterFrom }}
-                className="home-strip__card"
-              >
-                <span className="home-strip__num">{s.num}</span>
+            {primaryCategories.map((s, i) => (
+              <Link key={s.slug} to={`/services/${s.slug}`} className="home-strip__card">
+                <span className="home-strip__num">0{i + 1}</span>
                 <h3 className="display">{s.title}</h3>
                 <p>{s.short}</p>
                 <span className="home-strip__cta">Learn more →</span>
@@ -341,28 +342,28 @@ export default function HomePage() {
       <HorizonRush
         ready={introDone}
         id="support-reveal"
-        kicker="24/7 Full Time Support"
-        title="Always on. Always ahead."
+        kicker="Clear pathways"
+        title="From assessment to build."
         panels={[
           {
-            tag: "Strategy",
-            title: "One partner. Full stack.",
-            copy: "From roadmap to rollout — security, cloud, and ops under one Canadian team.",
+            tag: "Security",
+            title: "Assess, implement, manage",
+            copy: "Three security lines so you can start with evidence, roll out controls, or operate day-to-day protections.",
           },
           {
-            tag: "Response",
-            title: "Night or noon — we're live",
-            copy: "24/7 support worldwide so incidents never wait for business hours.",
+            tag: "Migration",
+            title: "Move platforms safely",
+            copy: "Tenant, cloud and device migrations with discovery, coexistence and cutover discipline.",
           },
           {
-            tag: "Clarity",
-            title: "Fluent IT, not jargon",
-            copy: "We translate tech into decisions your leadership can act on immediately.",
+            tag: "DevSecOps",
+            title: "Ship with security built in",
+            copy: "CI/CD security, AppSec and cloud/container controls integrated into delivery workflows.",
           },
           {
-            tag: "Growth",
-            title: "Scale without the panic",
-            copy: "Proactive reviews keep infrastructure ahead of the next growth spike.",
+            tag: "Development",
+            title: "Websites and mobile apps",
+            copy: "Structured discovery-to-launch delivery for static, dynamic, e-commerce and Android/iOS apps.",
           },
         ]}
       />
@@ -377,11 +378,12 @@ export default function HomePage() {
             mode="chars"
           />
           <p className="home-finale__copy">
-            Free IT consultation. No strings. Just strategy — modernize, secure, and scale.
+            Book a consultation. Tell us your platform and goals—we&apos;ll recommend the right
+            pathway and a clear next step.
           </p>
           <div className="home-finale__actions">
             <Link className="btn" to="/contact">
-              Book Free Consultation
+              Book a Consultation
             </Link>
             <Link className="btn btn-ghost" to="/about">
               Meet CanITSM

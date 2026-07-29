@@ -1,0 +1,117 @@
+.svc-hub {
+  padding: 3.5rem 0 1rem;
+}
+
+.svc-hub__h2 {
+  font-size: clamp(1.7rem, 4vw, 2.8rem);
+  margin-bottom: 0.75rem;
+  max-width: 16ch;
+}
+
+.svc-hub__lede {
+  color: var(--ink-muted);
+  max-width: 48ch;
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+.svc-hub__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.svc-hub__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 240px;
+  padding: 1.5rem 1.35rem;
+  border: 1px solid rgba(139, 92, 246, 0.22);
+  background:
+    linear-gradient(165deg, rgba(139, 92, 246, 0.08), transparent 40%),
+    linear-gradient(180deg, #f7f5fb, #ffffff);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.svc-hub__card:hover {
+  border-color: var(--neon);
+  box-shadow: 0 16px 40px rgba(6, 182, 212, 0.12);
+}
+
+.svc-hub__num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.svc-hub__card h3 {
+  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+}
+
+.svc-hub__card p {
+  color: var(--ink-muted);
+  line-height: 1.55;
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+.svc-hub__cta {
+  color: var(--neon);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.svc-hub__platforms {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.svc-hub__platforms li {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--line);
+  background: rgba(139, 92, 246, 0.06);
+  font-size: 0.85rem;
+}
+
+.svc-hub__process {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.svc-hub__process article {
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  background: #ffffff;
+}
+
+.svc-hub__process h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.svc-hub__process p {
+  color: var(--ink-muted);
+  line-height: 1.55;
+  font-size: 0.92rem;
+}
+
+.svc-hub__foot-copy {
+  color: var(--ink-muted);
+  max-width: 42ch;
+  margin: 0.75rem auto 1.5rem;
+  line-height: 1.6;
+}
+
+.services-foot {
+  text-align: center;
+  padding: 4rem 0 5rem;
+}

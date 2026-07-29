@@ -1,0 +1,22 @@
+# CanITSM Consulting
+> Security, migration, DevSecOps, Microsoft Partner and development services.
+
+## Core pages
+- [Home](https://www.canitsm.com/)
+- [About](https://www.canitsm.com/about)
+- [Services](https://www.canitsm.com/services)
+- [Resources](https://www.canitsm.com/resources)
+- [Contact](https://www.canitsm.com/contact)
+
+## Services
+- [Security Services](https://www.canitsm.com/services/security)
+- [Security Assessments](https://www.canitsm.com/services/security/assessments)
+- [Security Implementation](https://www.canitsm.com/services/security/implementation)
+- [Managed Security](https://www.canitsm.com/services/security/managed)
+- [Migration Services](https://www.canitsm.com/services/migration)
+- [Penetration Testing](https://www.canitsm.com/services/penetration-testing)
+- [DevSecOps Services](https://www.canitsm.com/services/devsecops)
+- [Microsoft Partner Services](https://www.canitsm.com/services/microsoft-partner)
+- [Development Services](https://www.canitsm.com/services/development)
+- [Website Development](https://www.canitsm.com/services/development/websites)
+- [Mobile App Development](https://www.canitsm.com/services/development/mobile-apps)

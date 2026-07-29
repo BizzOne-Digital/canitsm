@@ -8,24 +8,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 const traits = [
   {
-    title: "Custom-Tailored IT Plans",
-    copy: "We don't believe in one-size-fits-all. Strategies designed specifically for your business needs.",
+    title: "Security-first pathways",
+    copy: "Assessments, implementation and managed security grouped so you can start with evidence or operate ongoing controls.",
   },
   {
-    title: "100% Canadian Support",
-    copy: "Work with local, highly trained IT professionals who understand your business context.",
+    title: "Migration with discipline",
+    copy: "Tenant, cloud and device moves planned around discovery, coexistence, cutover and validation.",
   },
   {
-    title: "Quarterly Strategy Reviews",
-    copy: "Regular reviews that keep technology aligned with the next move your business needs to make.",
+    title: "DevSecOps in the pipeline",
+    copy: "Security integrated into delivery—CI/CD gates, AppSec and cloud/container hardening without empty buzzwords.",
   },
   {
-    title: "Vendor & Software Management",
-    copy: "Simplify how you manage all your vendors and software with one trusted partner.",
+    title: "Microsoft ecosystem support",
+    copy: "Partner Center readiness, compliance guidance and vulnerability support for partner-focused environments.",
   },
   {
-    title: "Microsoft 365 Experts",
-    copy: "Expert implementation and management of Microsoft 365 for modern workplaces.",
+    title: "Website & mobile development",
+    copy: "Structured delivery for static, dynamic and e-commerce sites plus Android and iOS applications.",
   },
 ];
 
@@ -86,19 +86,20 @@ export default function About() {
         <p className="eyebrow">About Us</p>
         <LandslideText
           className="about__title display"
-          text="Not just your IT provider — your growth partner"
+          text="Security-led. Delivery-aware. Fluent IT."
           mode="words"
         />
         <p className="about__lede serif">
-          CanITSM is more than an IT provider — we are a growth partner for Canadian organizations.
-          Driven by innovation and built on trust, we modernize and secure the digital backbone of
-          ambitious businesses.
+          CanITSM Consulting is a security- and development-focused partner for organizations
+          modernizing platforms and strengthening defenses. We speak Fluent IT—so leadership gets
+          clear decisions across cybersecurity, migration, DevSecOps, Microsoft ecosystems and
+          application delivery.
         </p>
 
         <div className="about__statement">
           <p className="display">SECURE.</p>
-          <p className="display">SCALE.</p>
-          <p className="display about__statement-lead">LEAD.</p>
+          <p className="display">MIGRATE.</p>
+          <p className="display about__statement-lead">BUILD.</p>
         </div>
 
         <div className="about__traits">

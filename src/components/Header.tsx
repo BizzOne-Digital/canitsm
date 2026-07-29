@@ -1,6 +1,7 @@
 import { NavLink, Link } from "react-router-dom";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { navCategories } from "../data/catalog";
 import "./Header.css";
 
 type HeaderProps = {
@@ -9,15 +10,15 @@ type HeaderProps = {
 
 const links = [
   { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
-  { to: "/process", label: "Process" },
-  { to: "/fluent-it", label: "Fluent IT" },
+  { to: "/services", label: "Services", hasMenu: true },
+  { to: "/resources", label: "Resources" },
   { to: "/contact", label: "Contact" },
 ];
 
 export default function Header({ ready }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const rootRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -43,7 +44,10 @@ export default function Header({ ready }: HeaderProps) {
   }, [open]);
 
   useEffect(() => {
-    const close = () => setOpen(false);
+    const close = () => {
+      setOpen(false);
+      setServicesOpen(false);
+    };
     window.addEventListener("resize", close);
     return () => window.removeEventListener("resize", close);
   }, []);
@@ -85,8 +89,8 @@ export default function Header({ ready }: HeaderProps) {
 
   return (
     <header
-      ref={rootRef}
       className={`header ${ready ? "header--ready" : ""} ${scrolled || open ? "header--solid" : ""}`}
+      ref={rootRef}
     >
       <div className="header__beam" aria-hidden="true" />
       <div className="header__scan" aria-hidden="true" />
@@ -105,12 +109,52 @@ export default function Header({ ready }: HeaderProps) {
         </Link>
 
         <nav className="header__nav" aria-label="Primary">
-          {links.map((l) => (
-            <NavLink key={l.to} to={l.to} className="header__link">
-              <span className="header__link-text">{l.label}</span>
-              <span className="header__link-glow" aria-hidden="true" />
-            </NavLink>
-          ))}
+          {links.map((l) =>
+            l.hasMenu ? (
+              <div
+                key={l.to}
+                className={`header__services ${servicesOpen ? "header__services--open" : ""}`}
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
+                <NavLink
+                  to={l.to}
+                  className="header__link"
+                  onFocus={() => setServicesOpen(true)}
+                >
+                  <span className="header__link-text">{l.label}</span>
+                  <span className="header__link-glow" aria-hidden="true" />
+                </NavLink>
+                <div className="header__mega" role="menu">
+                  {navCategories.map((cat) => (
+                    <div key={cat.slug} className="header__mega-col">
+                      <Link
+                        to={`/services/${cat.slug}`}
+                        className="header__mega-title"
+                        onClick={() => setServicesOpen(false)}
+                      >
+                        {cat.label}
+                      </Link>
+                      {cat.children?.map((child) => (
+                        <Link
+                          key={child.slug}
+                          to={`/services/${child.slug}`}
+                          onClick={() => setServicesOpen(false)}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <NavLink key={l.to} to={l.to} className="header__link">
+                <span className="header__link-text">{l.label}</span>
+                <span className="header__link-glow" aria-hidden="true" />
+              </NavLink>
+            ),
+          )}
         </nav>
 
         <div className="header__actions">
@@ -119,7 +163,7 @@ export default function Header({ ready }: HeaderProps) {
           </a>
           <Link to="/contact" className="header__cta">
             <span className="header__cta-pulse" aria-hidden="true" />
-            Book Free Consultation
+            Book a Consultation
           </Link>
           <button
             type="button"
@@ -148,12 +192,31 @@ export default function Header({ ready }: HeaderProps) {
               {l.label}
             </NavLink>
           ))}
+          <div className="header__drawer-services">
+            {navCategories.map((cat) => (
+              <div key={cat.slug}>
+                <Link to={`/services/${cat.slug}`} onClick={() => setOpen(false)}>
+                  {cat.label}
+                </Link>
+                {cat.children?.map((child) => (
+                  <Link
+                    key={child.slug}
+                    to={`/services/${child.slug}`}
+                    className="header__drawer-child"
+                    onClick={() => setOpen(false)}
+                  >
+                    {child.label}
+                  </Link>
+                ))}
+              </div>
+            ))}
+          </div>
           <Link
             to="/contact"
             className="header__cta header__cta--drawer"
             onClick={() => setOpen(false)}
           >
-            Book Free Consultation
+            Book a Consultation
           </Link>
         </nav>
       </div>

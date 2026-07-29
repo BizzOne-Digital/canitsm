@@ -24,10 +24,9 @@ export default function Nav({ ready }: NavProps) {
       <nav className="nav__links" aria-label="Primary">
         <NavLink to="/about">About</NavLink>
         <NavLink to="/services">Services</NavLink>
-        <NavLink to="/process">Process</NavLink>
-        <NavLink to="/fluent-it">Fluent IT</NavLink>
+        <NavLink to="/resources">Resources</NavLink>
         <NavLink to="/contact" className="nav__cta">
-          Book Free Consultation
+          Book a Consultation
         </NavLink>
       </nav>
     </header>

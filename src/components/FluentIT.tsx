@@ -8,16 +8,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 const pillars = [
   {
-    title: "No Jargon, Just Results",
-    copy: "Stop translating technical headaches. We Speak Fluent IT so you can speak fluent business. We bridge the gap between complex infrastructure and your bottom line.",
+    title: "No jargon, just decisions",
+    copy: "We Speak Fluent IT so you can speak fluent business—bridging security controls, migrations and delivery workflows to outcomes leadership can act on.",
   },
   {
-    title: "Proactive over Reactive",
-    copy: "While others fix problems, we prevent them. Our 24/7 monitoring ensures your tech stack evolves as fast as the Canadian market does.",
+    title: "Evidence before promises",
+    copy: "Assessments, penetration testing and scoped implementations replace blanket uptime claims. Coverage and escalation are agreed per engagement.",
   },
   {
-    title: "Digital Transformation",
-    copy: "From legacy server migrations to AI-ready cloud environments, we don't just manage your tech — we modernize it for the next generation of business.",
+    title: "Secure modernization",
+    copy: "From tenant and cloud migrations to DevSecOps pipelines and application builds, we modernize platforms without leaving security as an afterthought.",
   },
 ];
 
@@ -70,8 +70,8 @@ export default function FluentIT() {
     <section className="fluent" id="fluent" ref={ref}>
       <div className="fluent__marquee" aria-hidden="true">
         <div className="fluent__marquee-track">
-          <span>SECURE · SCALE · LEAD · FLUENT IT · </span>
-          <span>SECURE · SCALE · LEAD · FLUENT IT · </span>
+          <span>SECURE · MIGRATE · BUILD · FLUENT IT · </span>
+          <span>SECURE · MIGRATE · BUILD · FLUENT IT · </span>
         </div>
       </div>
 

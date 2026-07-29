@@ -2,12 +2,18 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LandslideText from "./LandslideText";
+import { usePageMeta } from "../hooks/usePageMeta";
 import "./Contact.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
+
+  usePageMeta(
+    "Contact CanITSM Consulting | Book a Consultation",
+    "Contact CanITSM Consulting about security, migration, penetration testing, DevSecOps, Microsoft Partner or development needs and book a consultation.",
+  );
 
   useLayoutEffect(() => {
     const root = ref.current;
@@ -60,17 +66,18 @@ export default function Contact() {
           <p className="eyebrow">Contact</p>
           <LandslideText
             className="contact__title display"
-            text="Let's talk Fluent IT"
+            text="Contact CanITSM Consulting"
             mode="words"
           />
           <p className="contact__lede serif">
-            Reach CanITSM for a free IT consultation. No strings — just a clear look at how to
-            modernize, secure, and scale your technology.
+            Reach us about security, migration, penetration testing, DevSecOps, Microsoft Partner
+            support or development. Book a consultation or send a message—we&apos;ll respond with a
+            clear next step.
           </p>
         </div>
 
         <div className="contact__panel">
-          <h3 className="contact__panel-title">Book a free IT consultation</h3>
+          <h3 className="contact__panel-title">Book a consultation</h3>
           <form
             className="contact__form"
             onSubmit={(e) => {
@@ -82,11 +89,12 @@ export default function Contact() {
                 `Business email: ${data.get("email") || ""}`,
                 `Business name: ${data.get("business") || ""}`,
                 `Phone: ${data.get("phone") || ""}`,
+                `Interest: ${data.get("interest") || ""}`,
                 "",
                 `${data.get("message") || ""}`,
               ].join("\n");
               window.location.href = `mailto:info@canitsm.com?subject=${encodeURIComponent(
-                "Free IT Consultation Request",
+                "Consultation Request",
               )}&body=${encodeURIComponent(body)}`;
             }}
           >
@@ -104,23 +112,45 @@ export default function Contact() {
             </label>
             <label>
               Phone
-              <input type="tel" name="phone" placeholder="+1 · Canada" />
+              <input type="tel" name="phone" placeholder="Phone number" />
+            </label>
+            <label>
+              Area of interest
+              <select name="interest" defaultValue="">
+                <option value="" disabled>
+                  Select a category
+                </option>
+                <option>Security Services</option>
+                <option>Migration Services</option>
+                <option>Penetration Testing</option>
+                <option>DevSecOps</option>
+                <option>Microsoft Partner Services</option>
+                <option>Development Services</option>
+                <option>Not sure yet</option>
+              </select>
             </label>
             <label>
               Message
-              <textarea name="message" rows={4} placeholder="Tell us about your IT goals" />
+              <textarea name="message" rows={4} placeholder="Tell us about your goals and timeline" />
             </label>
+            <p className="contact__privacy">
+              By submitting, you agree we may contact you about this request. We do not sell your
+              information.
+            </p>
             <button type="submit" className="btn">
-              Book Free Consultation
+              Book a Consultation
             </button>
           </form>
         </div>
 
         <div className="contact__meta">
           <a href="mailto:info@canitsm.com">info@canitsm.com</a>
-          <p>24/7 Full Time Support</p>
-          <p>Available Worldwide</p>
-          <p>Support team ready — start with a consultation</p>
+          <p>Service area: Canada &amp; remote engagements worldwide</p>
+          <p>Hours: Business hours by appointment (confirm with CanITSM)</p>
+          <p>
+            Postal address &amp; phone: to be published once client-confirmed NAP details are
+            provided.
+          </p>
         </div>
       </div>
     </section>

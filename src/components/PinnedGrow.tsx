@@ -7,24 +7,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 const slides = [
   {
-    kicker: "01 · Strategy-First",
-    title: "Quarterly Strategy Reviews",
-    copy: "Ensure your technology is always supporting your next big business move — not lagging behind it.",
+    kicker: "01 · Category clarity",
+    title: "Right pathway first",
+    copy: "Security, migration, penetration testing, DevSecOps, Microsoft Partner or development—scoped so you are not buying a generic help desk.",
   },
   {
-    kicker: "02 · 24/7 Security",
-    title: "Around-the-Clock Threat Hunting",
-    copy: "Sleep soundly knowing proactive monitoring protects your data while your team focuses on growth.",
+    kicker: "02 · Evidence-led security",
+    title: "Assess, then act",
+    copy: "Start with assessments when you need proof, move to implementation for controls, or managed security when day-to-day operations matter.",
   },
   {
-    kicker: "03 · Vendor Consolidation",
-    title: "One Point of Contact",
-    copy: "We manage your third-party vendors — ISPs, software, and more — so IT complexity stops at our desk.",
+    kicker: "03 · Platform fluency",
+    title: "M365 · Azure · AWS · GCP",
+    copy: "Migrations and hardening across Microsoft 365, Azure, AWS, Google Workspace, GCP and SharePoint with coexistence and cutover discipline.",
   },
   {
     kicker: "04 · Fluent IT",
-    title: "No Jargon. Just Results.",
-    copy: "Stop translating technical headaches. We speak Fluent IT so you can speak fluent business.",
+    title: "No jargon. Just decisions.",
+    copy: "We translate technical trade-offs into choices leadership can approve—Fluent IT so you can speak fluent business.",
   },
 ];
 

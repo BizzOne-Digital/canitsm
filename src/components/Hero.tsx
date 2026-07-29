@@ -13,7 +13,11 @@ type HeroProps = {
 
 const BRAND_CAN = "CAN".split("");
 const BRAND_ITSM = "ITSM".split("");
-const HEADLINES = ["Digitally transform.", "Secure your tech.", "Scale with confidence."];
+const HEADLINES = [
+  "Secure your stack.",
+  "Migrate with confidence.",
+  "Build and ship safer.",
+];
 const ORBIT_DOTS = Array.from({ length: 12 }, (_, i) => i);
 const SPARKS = Array.from({ length: 24 }, (_, i) => i);
 
@@ -350,7 +354,7 @@ export default function Hero({ ready }: HeroProps) {
       </div>
 
       <p className="hero__rail" aria-hidden="true">
-        Fluent IT · Canada · Secure · Scale
+        Fluent IT · Security · Migration · DevSecOps
       </p>
 
       <div className="hero__orbit" aria-hidden="true">
@@ -383,7 +387,7 @@ export default function Hero({ ready }: HeroProps) {
       </div>
 
       <div className="hero__content container">
-        <p className="eyebrow hero__eyebrow">Canada-based IT Consulting</p>
+        <p className="eyebrow hero__eyebrow">Security · Migration · DevSecOps · Development</p>
 
         <div className="hero__brand-wrap">
           <div className="hero__brand-glow" aria-hidden="true" />
@@ -410,13 +414,14 @@ export default function Hero({ ready }: HeroProps) {
         </h2>
 
         <p className="hero__lede">
-          CanITSM helps ambitious Canadian businesses modernize infrastructure, protect digital
-          assets, and grow with proactive IT — Fluent IT, not jargon.
+          CanITSM delivers cybersecurity, cloud migration, penetration testing, DevSecOps, Microsoft
+          Partner support and development services across Microsoft 365, Azure, AWS, Google Workspace
+          and GCP — Fluent IT, not jargon.
         </p>
 
         <div className="hero__cta-row">
           <Link className="btn" to="/contact">
-            Book Free Consultation
+            Book a Consultation
           </Link>
           <Link className="btn btn-ghost" to="/services">
             Explore Services

@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { services } from "../data/services";
+import { primaryCategories } from "../data/catalog";
 import "./Footer.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -80,20 +80,25 @@ export default function Footer() {
 
   return (
     <footer className="footer" ref={ref}>
-      <div className="footer__glow" aria-hidden="true" />
       <div className="footer__float footer__float--a" aria-hidden="true" />
       <div className="footer__float footer__float--b" aria-hidden="true" />
 
+      <div className="footer__glow" aria-hidden="true" />
+
       <div className="footer__mega" aria-hidden="true">
-        <span className="footer__mega-word">SECURE</span>
-        <span className="footer__mega-word">SCALE</span>
-        <span className="footer__mega-word">LEAD</span>
+        <span className="footer__mega-word display">SECURE</span>
+        <span className="footer__mega-word display">MIGRATE</span>
+        <span className="footer__mega-word display">BUILD</span>
       </div>
 
       <div className="footer__marquee" aria-hidden="true">
         <div className="footer__marquee-track">
-          <span>FLUENT IT · 24/7 SUPPORT · CANADA · CLOUD · CYBER · CANITSM · </span>
-          <span>FLUENT IT · 24/7 SUPPORT · CANADA · CLOUD · CYBER · CANITSM · </span>
+          <span>
+            SECURITY · MIGRATION · DEVSECOPS · PEN TESTING · MICROSOFT · DEVELOPMENT · CANITSM ·{" "}
+          </span>
+          <span>
+            SECURITY · MIGRATION · DEVSECOPS · PEN TESTING · MICROSOFT · DEVELOPMENT · CANITSM ·{" "}
+          </span>
         </div>
       </div>
 
@@ -109,12 +114,12 @@ export default function Footer() {
             />
           </Link>
           <p className="footer__blurb">
-            Canada-based IT consulting. We modernize, secure, and scale technology for ambitious
-            businesses — with Fluent IT, not jargon.
+            CanITSM Consulting delivers cybersecurity, cloud migration, DevSecOps, Microsoft Partner
+            support and development services—with Fluent IT, not jargon.
           </p>
           <Link to="/contact" className="btn footer__cta">
             <span className="footer__cta-shine" aria-hidden="true" />
-            Book Free Consultation
+            Book a Consultation
           </Link>
         </div>
 
@@ -124,15 +129,14 @@ export default function Footer() {
             <Link to="/">Home</Link>
             <Link to="/about">About</Link>
             <Link to="/services">Services</Link>
-            <Link to="/process">Process</Link>
-            <Link to="/fluent-it">Fluent IT</Link>
+            <Link to="/resources">Resources</Link>
             <Link to="/contact">Contact</Link>
           </div>
 
           <div className="footer__col">
             <h3 className="footer__heading">Services</h3>
-            {services.slice(0, 4).map((s) => (
-              <Link key={s.slug} to={`/services/${s.slug}`} state={{ enterFrom: s.enterFrom }}>
+            {primaryCategories.map((s) => (
+              <Link key={s.slug} to={`/services/${s.slug}`}>
                 {s.title}
               </Link>
             ))}
@@ -141,9 +145,11 @@ export default function Footer() {
           <div className="footer__col">
             <h3 className="footer__heading">Contact</h3>
             <a href="mailto:info@canitsm.com">info@canitsm.com</a>
-            <p>24/7 Full Time Support</p>
-            <p>Available Worldwide</p>
-            <p className="footer__note">Free IT consultation — no strings, just strategy.</p>
+            <p>Service area: Canada &amp; remote engagements worldwide</p>
+            <p className="footer__note">
+              Address and phone available on request pending client confirmation for NAP listing.
+            </p>
+            <p className="footer__note">Book a consultation — clear scope, no filler.</p>
           </div>
         </div>
       </div>
@@ -151,7 +157,7 @@ export default function Footer() {
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
           <p>© {year} CanITSM Consulting. All rights reserved.</p>
-          <p className="footer__credit">Secure · Scale · Lead</p>
+          <p className="footer__credit">Secure · Migrate · Build</p>
         </div>
       </div>
     </footer>

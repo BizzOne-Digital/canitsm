@@ -12,15 +12,16 @@ export default function ProcessPage() {
     <main className="page-shell">
       <section className="page-shell__hero container">
         <p className="eyebrow">Process</p>
-        <h1 className="display page-shell__title">Clarity. Partnership. Purpose.</h1>
+        <h1 className="display page-shell__title">Discover. Design. Deliver.</h1>
         <p className="page-shell__lede">
-          Transforming your IT infrastructure is a strategic journey — and we walk it with you.
+          A clear engagement path from goals and risk to scoped delivery—whether you need security,
+          migration, testing, DevSecOps or development.
         </p>
       </section>
       <Process ready={introDone} />
       <section className="page-shell__cta container">
         <Link className="btn" to="/contact">
-          Start with a consultation
+          Book a Consultation
         </Link>
       </section>
     </main>
